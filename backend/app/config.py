@@ -27,8 +27,6 @@ if IS_PRODUCTION:
     _errors = []
     if SECRET_KEY == _SECRET_KEY_DEFAULT:
         _errors.append("SECRET_KEY must be set to a strong random value in production (use: openssl rand -hex 32)")
-    if RAZORPAY_KEY_ID == _RZP_KEY_DEFAULT or RAZORPAY_KEY_SECRET == _RZP_SECRET_DEFAULT:
-        _errors.append("RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET must be set in production")
     if MONGODB_URL == "mongodb://localhost:27017":
         _errors.append("MONGODB_URL must point to your production database in production")
     if any("localhost" in o or "127.0.0.1" in o for o in CORS_ORIGINS):
