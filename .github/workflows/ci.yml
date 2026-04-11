@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKERHUB_USER: adirastogi235
+  DOCKERHUB_USER: arrastogi
 
 jobs:
   backend:
