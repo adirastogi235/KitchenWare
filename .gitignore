@@ -1,0 +1,30 @@
+# Environment files — NEVER commit
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Python
+backend/venv/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/next-env.d.ts
+
+# Build artifacts
+*.log
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Claude Code internal state
+.claude/

@@ -1,0 +1,35 @@
+import "./globals.css";
+import { AppProvider } from "@/lib/context";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Toast from "@/components/Toast";
+
+export const metadata = {
+  title: "Rasoi Ghar - Premium Kitchenware Shop",
+  description:
+    "Your one-stop destination for premium kitchenware. From traditional Indian cookware to modern kitchen appliances, Rasoi Ghar brings quality to your kitchen.",
+  keywords: "kitchenware, cookware, cutlery, kitchen appliances, rasoi ghar, Indian kitchen",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen flex flex-col antialiased">
+        <AppProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toast />
+        </AppProvider>
+      </body>
+    </html>
+  );
+}
