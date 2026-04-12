@@ -36,17 +36,18 @@ async def generate_and_send_otp(phone: str) -> None:
                         "mobile": f"91{phone}",
                         "otp": otp,
                         "otp_length": 6,
+                        "otp_channel": "whatsapp",
                     },
                 )
             data = resp.json()
             if data.get("type") == "success":
-                logger.info("MSG91 SMS sent to +91%s", phone)
+                print(f"[OTP] WhatsApp OTP sent to +91{phone}", flush=True)
             else:
-                logger.warning("MSG91 response: %s (OTP still valid in DB)", data.get("message"))
+                print(f"[OTP] MSG91 response: {data.get('message')} (OTP still valid in DB)", flush=True)
         except Exception as e:
-            logger.warning("MSG91 send failed: %s (OTP still valid in DB)", e)
+            print(f"[OTP] MSG91 send failed: {e} (OTP still valid in DB)", flush=True)
     else:
-        logger.info("MSG91 not configured — check Render logs for OTP")
+        print("[OTP] MSG91 not configured — check Render logs for OTP", flush=True)
 
 
 async def verify_stored_otp(phone: str, otp: str) -> bool:
