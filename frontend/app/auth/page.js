@@ -27,11 +27,15 @@ export default function AuthPage() {
   }, [countdown]);
 
   const setupRecaptcha = () => {
-    if (!recaptchaRef.current) {
-      recaptchaRef.current = new RecaptchaVerifier(auth, "recaptcha-container", {
-        size: "invisible",
-      });
+    if (recaptchaRef.current) {
+      try { recaptchaRef.current.clear(); } catch {}
+      recaptchaRef.current = null;
     }
+    const container = document.getElementById("recaptcha-container");
+    if (container) container.innerHTML = "";
+    recaptchaRef.current = new RecaptchaVerifier(auth, "recaptcha-container", {
+      size: "invisible",
+    });
     return recaptchaRef.current;
   };
 
