@@ -23,7 +23,7 @@ async def generate_and_send_otp(phone: str) -> None:
         "created_at": datetime.now(timezone.utc),
     })
 
-    logger.info("OTP for +91%s: %s (expires in %d min)", phone, otp, OTP_EXPIRY_MINUTES)
+    print(f"[OTP] +91{phone}: {otp} (expires in {OTP_EXPIRY_MINUTES} min)", flush=True)
 
     if MSG91_AUTH_KEY and MSG91_TEMPLATE_ID:
         try:
