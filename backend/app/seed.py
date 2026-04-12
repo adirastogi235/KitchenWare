@@ -5,10 +5,7 @@ Run: python -m app.seed
 import asyncio
 from datetime import datetime, timezone
 from motor.motor_asyncio import AsyncIOMotorClient
-from passlib.context import CryptContext
 from app.config import MONGODB_URL, DATABASE_NAME
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 SAMPLE_PRODUCTS = [
     # Cookware
@@ -240,19 +237,15 @@ SAMPLE_PRODUCTS = [
 
 ADMIN_USER = {
     "name": "Admin",
-    "email": "admin@rasoighar.com",
-    "password": pwd_context.hash("admin123"),
-    "phone": "+91-9876543210",
+    "phone": "9876543210",
     "address": "Rasoi Ghar HQ, Delhi",
     "is_admin": True,
     "created_at": datetime.now(timezone.utc),
 }
 
 SAMPLE_USER = {
-    "name": "Priya Sharma",
-    "email": "priya@example.com",
-    "password": pwd_context.hash("password123"),
-    "phone": "+91-9876543211",
+    "name": "Ravish Rastogi",
+    "phone": "9876543211",
     "address": "123 MG Road, Mumbai",
     "is_admin": False,
     "created_at": datetime.now(timezone.utc),
@@ -285,11 +278,11 @@ async def seed():
     # Insert users
     await db["users"].insert_one(ADMIN_USER)
     await db["users"].insert_one(SAMPLE_USER)
-    print("✅ Created admin user: admin@rasoighar.com / admin123")
-    print("✅ Created sample user: priya@example.com / password123")
+    print("✅ Created admin user: phone 9876543210")
+    print("✅ Created sample user: phone 9876543211")
 
     # Create indexes
-    await db["users"].create_index("email", unique=True)
+    await db["users"].create_index("phone", unique=True)
     await db["products"].create_index("category")
     await db["products"].create_index("name")
     print("✅ Created database indexes")

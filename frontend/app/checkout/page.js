@@ -62,7 +62,7 @@ export default function CheckoutPage() {
         prefill: {
           name: form.full_name,
           contact: form.phone,
-          email: user?.email || "",
+          contact: user?.phone || form.phone,
         },
         theme: { color: "#f59e0b" },
         handler: async (response) => {

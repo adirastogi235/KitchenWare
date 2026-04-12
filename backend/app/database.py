@@ -15,7 +15,7 @@ reviews_collection = database["reviews"]
 
 async def create_indexes():
     """Create database indexes for performance."""
-    await users_collection.create_index("email", unique=True)
+    await users_collection.create_index("phone", unique=True)
     await products_collection.create_index("category")
     await products_collection.create_index("name")
     await products_collection.create_index([("name", "text"), ("description", "text")])

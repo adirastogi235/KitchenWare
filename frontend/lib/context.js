@@ -65,8 +65,15 @@ export function AppProvider({ children }) {
     loadUser();
   }, [loadUser]);
 
-  const login = async (email, password) => {
-    const data = await authApi.login({ email, password });
+  const sendOtp = async (phone) => {
+    const data = await authApi.sendOtp(phone);
+    return data;
+  };
+
+  const verifyOtp = async (phone, otp, name) => {
+    const payload = { phone, otp };
+    if (name) payload.name = name;
+    const data = await authApi.verifyOtp(payload);
     localStorage.setItem("token", data.access_token);
     setUser(data.user);
     try {
@@ -77,13 +84,6 @@ export function AppProvider({ children }) {
       const w = await wishlistApi.get();
       setWishlist(w);
     } catch {}
-    return data.user;
-  };
-
-  const register = async (name, email, password) => {
-    const data = await authApi.register({ name, email, password });
-    localStorage.setItem("token", data.access_token);
-    setUser(data.user);
     return data.user;
   };
 
@@ -143,8 +143,8 @@ export function AppProvider({ children }) {
         loading,
         darkMode,
         toggleDarkMode,
-        login,
-        register,
+        sendOtp,
+        verifyOtp,
         logout,
         addToCart,
         updateCartItem,
