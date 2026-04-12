@@ -65,15 +65,14 @@ export function AppProvider({ children }) {
     loadUser();
   }, [loadUser]);
 
-  const sendOtp = async (phone) => {
-    const data = await authApi.sendOtp(phone);
-    return data;
+  const checkPhone = async (phone) => {
+    return await authApi.checkPhone(phone);
   };
 
-  const verifyOtp = async (phone, otp, name) => {
-    const payload = { phone, otp };
+  const verifyFirebaseToken = async (firebaseToken, name) => {
+    const payload = { firebase_token: firebaseToken };
     if (name) payload.name = name;
-    const data = await authApi.verifyOtp(payload);
+    const data = await authApi.verifyFirebase(payload);
     localStorage.setItem("token", data.access_token);
     setUser(data.user);
     try {
@@ -143,8 +142,8 @@ export function AppProvider({ children }) {
         loading,
         darkMode,
         toggleDarkMode,
-        sendOtp,
-        verifyOtp,
+        checkPhone,
+        verifyFirebaseToken,
         logout,
         addToCart,
         updateCartItem,

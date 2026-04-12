@@ -30,8 +30,8 @@ async function request(endpoint, options = {}) {
 
 // Auth
 export const authApi = {
-  sendOtp: (phone) => request("/auth/send-otp", { method: "POST", body: JSON.stringify({ phone }) }),
-  verifyOtp: (data) => request("/auth/verify-otp", { method: "POST", body: JSON.stringify(data) }),
+  checkPhone: (phone) => request("/auth/check-phone", { method: "POST", body: JSON.stringify({ phone }) }),
+  verifyFirebase: (data) => request("/auth/firebase-verify", { method: "POST", body: JSON.stringify(data) }),
   getProfile: () => request("/auth/me"),
   updateProfile: (data) => request("/auth/me", { method: "PUT", body: JSON.stringify(data) }),
 };

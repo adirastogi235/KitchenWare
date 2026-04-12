@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/lib/context";
+import { auth } from "@/lib/firebase";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 export default function AuthPage() {
   const [step, setStep] = useState("phone");
@@ -12,15 +14,26 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [countdown, setCountdown] = useState(0);
-  const { sendOtp, verifyOtp } = useApp();
+  const [confirmationResult, setConfirmationResult] = useState(null);
+  const { checkPhone, verifyFirebaseToken } = useApp();
   const router = useRouter();
   const otpRefs = useRef([]);
+  const recaptchaRef = useRef(null);
 
   useEffect(() => {
     if (countdown <= 0) return;
     const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
     return () => clearTimeout(timer);
   }, [countdown]);
+
+  const setupRecaptcha = () => {
+    if (!recaptchaRef.current) {
+      recaptchaRef.current = new RecaptchaVerifier(auth, "recaptcha-container", {
+        size: "invisible",
+      });
+    }
+    return recaptchaRef.current;
+  };
 
   const handleSendOtp = async (e) => {
     e.preventDefault();
@@ -31,13 +44,22 @@ export default function AuthPage() {
     setLoading(true);
     setError("");
     try {
-      const data = await sendOtp(phone);
-      setIsNewUser(data.is_new_user);
+      const recaptcha = setupRecaptcha();
+      const [result, phoneCheck] = await Promise.all([
+        signInWithPhoneNumber(auth, `+91${phone}`, recaptcha),
+        checkPhone(phone),
+      ]);
+      setConfirmationResult(result);
+      setIsNewUser(phoneCheck.is_new_user);
       setStep("otp");
       setCountdown(30);
       setTimeout(() => otpRefs.current[0]?.focus(), 100);
     } catch (err) {
-      setError(err.message);
+      if (recaptchaRef.current) {
+        try { recaptchaRef.current.clear(); } catch {}
+        recaptchaRef.current = null;
+      }
+      setError(err.message || "Failed to send OTP");
     }
     setLoading(false);
   };
@@ -75,8 +97,8 @@ export default function AuthPage() {
   const handleVerify = async (e) => {
     e.preventDefault();
     const otpString = otp.join("");
-    if (otpString.length < 4) {
-      setError("Enter the complete OTP");
+    if (otpString.length < 6) {
+      setError("Enter the complete 6-digit OTP");
       return;
     }
     if (isNewUser && !name.trim()) {
@@ -86,10 +108,16 @@ export default function AuthPage() {
     setLoading(true);
     setError("");
     try {
-      await verifyOtp(phone, otpString, isNewUser ? name.trim() : null);
+      const result = await confirmationResult.confirm(otpString);
+      const firebaseToken = await result.user.getIdToken();
+      await verifyFirebaseToken(firebaseToken, isNewUser ? name.trim() : null);
       router.push("/");
     } catch (err) {
-      setError(err.message);
+      if (err.code === "auth/invalid-verification-code") {
+        setError("Invalid OTP. Please try again.");
+      } else {
+        setError(err.message || "Verification failed");
+      }
     }
     setLoading(false);
   };
@@ -99,17 +127,28 @@ export default function AuthPage() {
     setLoading(true);
     setError("");
     try {
-      await sendOtp(phone);
+      if (recaptchaRef.current) {
+        try { recaptchaRef.current.clear(); } catch {}
+        recaptchaRef.current = null;
+      }
+      const recaptcha = setupRecaptcha();
+      const result = await signInWithPhoneNumber(auth, `+91${phone}`, recaptcha);
+      setConfirmationResult(result);
       setCountdown(30);
       setOtp(["", "", "", "", "", ""]);
     } catch (err) {
-      setError(err.message);
+      if (recaptchaRef.current) {
+        try { recaptchaRef.current.clear(); } catch {}
+        recaptchaRef.current = null;
+      }
+      setError(err.message || "Failed to resend OTP");
     }
     setLoading(false);
   };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+      <div id="recaptcha-container"></div>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <span className="text-5xl block mb-4">🍳</span>
@@ -212,7 +251,7 @@ export default function AuthPage() {
 
               <button
                 type="submit"
-                disabled={loading || otp.join("").length < 4}
+                disabled={loading || otp.join("").length < 6}
                 className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
               >
                 {loading ? "Verifying..." : isNewUser ? "Create Account" : "Sign In"}
@@ -225,6 +264,7 @@ export default function AuthPage() {
                     setStep("phone");
                     setOtp(["", "", "", "", "", ""]);
                     setError("");
+                    setConfirmationResult(null);
                   }}
                   className="text-[var(--color-primary)] font-medium hover:underline"
                 >

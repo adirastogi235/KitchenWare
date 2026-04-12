@@ -3,10 +3,10 @@ from datetime import datetime, timezone
 from bson import ObjectId
 from app.database import users_collection
 from app.models.user import (
-    SendOTPRequest, VerifyOTPRequest, UserResponse, UserUpdate, Token, SendOTPResponse,
+    CheckPhoneRequest, FirebaseVerifyRequest, UserResponse, UserUpdate, Token,
 )
 from app.auth import create_access_token, get_current_user
-from app.sms import generate_and_send_otp, verify_stored_otp
+from app.firebase_auth import verify_firebase_token
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
@@ -22,26 +22,37 @@ def _user_response(user: dict) -> UserResponse:
     )
 
 
-@router.post("/send-otp", response_model=SendOTPResponse)
-async def send_otp_endpoint(req: SendOTPRequest):
+@router.post("/check-phone")
+async def check_phone(req: CheckPhoneRequest):
     existing = await users_collection.find_one({"phone": req.phone})
+    return {"is_new_user": existing is None}
+
+
+@router.post("/firebase-verify", response_model=Token)
+async def firebase_verify(req: FirebaseVerifyRequest):
     try:
-        await generate_and_send_otp(req.phone)
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(e))
-    return SendOTPResponse(message="OTP sent successfully", is_new_user=existing is None)
-
-
-@router.post("/verify-otp", response_model=Token)
-async def verify_otp_endpoint(req: VerifyOTPRequest):
-    valid = await verify_stored_otp(req.phone, req.otp)
-    if not valid:
+        firebase_payload = await verify_firebase_token(req.firebase_token)
+    except ValueError as e:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid or expired OTP",
+            detail=str(e),
         )
 
-    user = await users_collection.find_one({"phone": req.phone})
+    phone_number = firebase_payload.get("phone_number", "")
+    if phone_number.startswith("+91"):
+        phone = phone_number[3:]
+    elif phone_number.startswith("91") and len(phone_number) == 12:
+        phone = phone_number[2:]
+    else:
+        phone = phone_number
+
+    if not phone:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Phone number not found in Firebase token",
+        )
+
+    user = await users_collection.find_one({"phone": phone})
 
     if user is None:
         if not req.name:
@@ -51,7 +62,7 @@ async def verify_otp_endpoint(req: VerifyOTPRequest):
             )
         user_dict = {
             "name": req.name,
-            "phone": req.phone,
+            "phone": phone,
             "address": None,
             "is_admin": False,
             "created_at": datetime.now(timezone.utc),

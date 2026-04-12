@@ -15,8 +15,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", _SECRET_KEY_DEFAULT)
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440"))
 
-MSG91_AUTH_KEY = os.getenv("MSG91_AUTH_KEY", "")
-MSG91_TEMPLATE_ID = os.getenv("MSG91_TEMPLATE_ID", "")
+FIREBASE_PROJECT_ID = os.getenv("FIREBASE_PROJECT_ID", "rasoi-ghar-9729e")
 
 _RZP_KEY_DEFAULT = "rzp_test_placeholder"
 _RZP_SECRET_DEFAULT = "placeholder_secret"

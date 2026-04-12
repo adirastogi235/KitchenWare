@@ -4,38 +4,29 @@ from datetime import datetime
 import re
 
 
-class SendOTPRequest(BaseModel):
+def _clean_indian_phone(v: str) -> str:
+    cleaned = re.sub(r"[\s\-]", "", v)
+    if cleaned.startswith("+91"):
+        cleaned = cleaned[3:]
+    elif cleaned.startswith("91") and len(cleaned) == 12:
+        cleaned = cleaned[2:]
+    if not re.match(r"^[6-9]\d{9}$", cleaned):
+        raise ValueError("Enter a valid 10-digit Indian mobile number")
+    return cleaned
+
+
+class CheckPhoneRequest(BaseModel):
     phone: str = Field(..., description="10-digit Indian mobile number")
 
     @field_validator("phone")
     @classmethod
     def validate_indian_phone(cls, v):
-        cleaned = re.sub(r"[\s\-]", "", v)
-        if cleaned.startswith("+91"):
-            cleaned = cleaned[3:]
-        elif cleaned.startswith("91") and len(cleaned) == 12:
-            cleaned = cleaned[2:]
-        if not re.match(r"^[6-9]\d{9}$", cleaned):
-            raise ValueError("Enter a valid 10-digit Indian mobile number")
-        return cleaned
+        return _clean_indian_phone(v)
 
 
-class VerifyOTPRequest(BaseModel):
-    phone: str
-    otp: str = Field(..., min_length=4, max_length=6)
+class FirebaseVerifyRequest(BaseModel):
+    firebase_token: str
     name: Optional[str] = Field(None, min_length=2, max_length=100)
-
-    @field_validator("phone")
-    @classmethod
-    def validate_indian_phone(cls, v):
-        cleaned = re.sub(r"[\s\-]", "", v)
-        if cleaned.startswith("+91"):
-            cleaned = cleaned[3:]
-        elif cleaned.startswith("91") and len(cleaned) == 12:
-            cleaned = cleaned[2:]
-        if not re.match(r"^[6-9]\d{9}$", cleaned):
-            raise ValueError("Enter a valid 10-digit Indian mobile number")
-        return cleaned
 
 
 class UserResponse(BaseModel):
@@ -56,8 +47,3 @@ class Token(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: UserResponse
-
-
-class SendOTPResponse(BaseModel):
-    message: str
-    is_new_user: bool
