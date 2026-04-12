@@ -62,13 +62,17 @@ export default function HomePage() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 leading-[1.05] tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 leading-[1.05] tracking-tight">
               Elevate Your
               <br />
               <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
                 Kitchen Experience
               </span>
             </h1>
+
+            <p className="text-xl md:text-2xl text-emerald-300/80 font-medium mb-6 italic">
+              &ldquo;आपकी रसोई, हमारी ज़िम्मेदारी&rdquo;
+            </p>
 
             <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
               Premium kitchenware curated for the modern Indian home. From traditional
