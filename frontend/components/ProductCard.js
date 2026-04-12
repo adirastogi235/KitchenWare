@@ -73,37 +73,34 @@ export default function ProductCard({ product }) {
 
   return (
     <Link href={`/products/${product.id}`} className="group block">
-      <div className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-500 hover:-translate-y-1">
-        {/* Image */}
+      <div className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-black/[0.06] hover:border-emerald-200 dark:hover:border-emerald-800">
         <div className="relative aspect-square overflow-hidden bg-[var(--color-surface-2)]">
           <img
             src={product.image_url}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             loading="lazy"
           />
-          {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
             {product.featured && (
-              <span className="px-2.5 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
-                ⭐ Featured
+              <span className="px-2.5 py-1 bg-emerald-500 text-white text-xs font-bold rounded-full shadow-lg shadow-emerald-500/25">
+                Featured
               </span>
             )}
             {product.stock <= 5 && product.stock > 0 && (
-              <span className="px-2.5 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+              <span className="px-2.5 py-1 bg-rose-500 text-white text-xs font-bold rounded-full">
                 Low Stock
               </span>
             )}
           </div>
-          {/* Wishlist */}
           <button
             onClick={handleToggleWishlist}
-            className="absolute top-3 right-3 p-2 rounded-full bg-white/80 dark:bg-black/40 backdrop-blur-sm hover:bg-white dark:hover:bg-black/60 transition-all duration-200 shadow-md"
+            className="absolute top-3 right-3 p-2.5 rounded-full bg-white/90 dark:bg-slate-900/80 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-900 transition-all duration-200 shadow-sm hover:shadow-md"
             title={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
           >
             <svg
-              className={`w-5 h-5 transition-colors duration-200 ${
-                inWishlist ? "text-red-500 fill-red-500" : "text-gray-400"
+              className={`w-4.5 h-4.5 transition-colors duration-200 ${
+                inWishlist ? "text-rose-500 fill-rose-500" : "text-slate-400"
               }`}
               fill={inWishlist ? "currentColor" : "none"}
               stroke="currentColor"
@@ -119,21 +116,19 @@ export default function ProductCard({ product }) {
           </button>
         </div>
 
-        {/* Info */}
         <div className="p-4">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-medium text-[var(--color-primary)] bg-amber-500/10 px-2 py-0.5 rounded-full">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 px-2.5 py-0.5 rounded-full">
               {product.category}
             </span>
             {product.brand && (
               <span className="text-xs text-[var(--color-text-muted)]">{product.brand}</span>
             )}
           </div>
-          <h3 className="font-semibold text-[var(--color-text)] mb-1 line-clamp-1 group-hover:text-[var(--color-primary)] transition-colors duration-200">
+          <h3 className="font-semibold text-[var(--color-text)] mb-1 line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200">
             {product.name}
           </h3>
 
-          {/* Rating */}
           {product.num_reviews > 0 && (
             <div className="flex items-center gap-1 mb-2">
               <div className="flex">
@@ -141,7 +136,7 @@ export default function ProductCard({ product }) {
                   <svg
                     key={star}
                     className={`w-3.5 h-3.5 ${
-                      star <= Math.round(product.avg_rating) ? "text-amber-400" : "text-gray-300"
+                      star <= Math.round(product.avg_rating) ? "text-amber-400" : "text-slate-200 dark:text-slate-600"
                     }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -159,25 +154,27 @@ export default function ProductCard({ product }) {
           </p>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-lg font-bold text-gradient">₹{product.price.toLocaleString("en-IN")}</span>
+            <span className="text-lg font-bold text-[var(--color-text)]">
+              ₹{product.price.toLocaleString("en-IN")}
+            </span>
             {qty === 0 ? (
               <button
                 onClick={handleAddToCart}
                 disabled={product.stock === 0 || busy}
-                className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none active:scale-95"
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none active:scale-95"
               >
                 {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
               </button>
             ) : (
               <div
                 onClick={stopLink}
-                className="flex items-center gap-1 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 p-1 shadow-lg shadow-amber-500/25"
+                className="flex items-center gap-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 p-1 shadow-lg shadow-emerald-500/20"
               >
                 <button
                   onClick={handleDecrement}
                   disabled={busy}
                   aria-label="Decrease quantity"
-                  className="w-7 h-7 flex items-center justify-center rounded-md bg-white/20 hover:bg-white/30 text-white font-bold text-lg leading-none transition-colors disabled:opacity-50 active:scale-90"
+                  className="w-7 h-7 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-lg leading-none transition-colors disabled:opacity-50 active:scale-90"
                 >
                   −
                 </button>
@@ -188,7 +185,7 @@ export default function ProductCard({ product }) {
                   onClick={handleIncrement}
                   disabled={busy || qty >= product.stock}
                   aria-label="Increase quantity"
-                  className="w-7 h-7 flex items-center justify-center rounded-md bg-white/20 hover:bg-white/30 text-white font-bold text-lg leading-none transition-colors disabled:opacity-50 active:scale-90"
+                  className="w-7 h-7 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white font-bold text-lg leading-none transition-colors disabled:opacity-50 active:scale-90"
                 >
                   +
                 </button>

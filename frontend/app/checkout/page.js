@@ -34,7 +34,7 @@ export default function CheckoutPage() {
         <p className="text-[var(--color-text-muted)] mb-6">Add some items to your cart first.</p>
         <Link
           href="/products"
-          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold"
+          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold"
         >
           Browse Products
         </Link>
@@ -144,7 +144,7 @@ export default function CheckoutPage() {
                     value={form.full_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
                 <div>
@@ -155,7 +155,7 @@ export default function CheckoutPage() {
                     value={form.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -167,7 +167,7 @@ export default function CheckoutPage() {
                     onChange={handleChange}
                     required
                     placeholder="House/Flat No., Street Name"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
                     value={form.address_line2}
                     onChange={handleChange}
                     placeholder="Landmark, Area (optional)"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
                 <div>
@@ -189,7 +189,7 @@ export default function CheckoutPage() {
                     value={form.city}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
                 <div>
@@ -200,7 +200,7 @@ export default function CheckoutPage() {
                     value={form.state}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
                 <div>
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
                     value={form.pincode}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
               </div>
@@ -232,7 +232,7 @@ export default function CheckoutPage() {
                     key={method.value}
                     className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
                       form.payment_method === method.value
-                        ? "border-[var(--color-primary)] bg-amber-500/5"
+                        ? "border-[var(--color-primary)] bg-emerald-500/5"
                         : "border-[var(--color-border)] hover:border-[var(--color-primary)]/50"
                     }`}
                   >
@@ -242,7 +242,7 @@ export default function CheckoutPage() {
                       value={method.value}
                       checked={form.payment_method === method.value}
                       onChange={handleChange}
-                      className="accent-amber-500"
+                      className="accent-emerald-500"
                     />
                     <span className="text-xl">{method.icon}</span>
                     <span className="font-medium">{method.label}</span>
@@ -297,7 +297,7 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
               >
                 {loading ? "Placing Order..." : `Place Order — ₹${grandTotal.toLocaleString("en-IN")}`}
               </button>

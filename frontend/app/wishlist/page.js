@@ -11,7 +11,7 @@ export default function WishlistPage() {
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <span className="text-6xl block mb-4">❤️</span>
         <h1 className="text-2xl font-bold mb-2">Please sign in to view your wishlist</h1>
-        <Link href="/auth" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold mt-4">
+        <Link href="/auth" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold mt-4">
           Sign In
         </Link>
       </div>
@@ -29,7 +29,7 @@ export default function WishlistPage() {
           <span className="text-6xl block mb-4">❤️</span>
           <h3 className="text-xl font-semibold mb-2">Your wishlist is empty</h3>
           <p className="text-[var(--color-text-muted)] mb-6">Save items you love for later!</p>
-          <Link href="/products" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold">
+          <Link href="/products" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold">
             Browse Products
           </Link>
         </div>

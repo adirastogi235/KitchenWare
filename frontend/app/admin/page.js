@@ -150,7 +150,7 @@ export default function AdminPage() {
         {[
           { label: "Total Products", value: products.length, icon: "📦", color: "from-blue-500 to-indigo-500" },
           { label: "Total Orders", value: orders.length, icon: "🛒", color: "from-green-500 to-emerald-500" },
-          { label: "Revenue", value: `₹${orders.reduce((a, o) => a + o.total, 0).toLocaleString("en-IN")}`, icon: "💰", color: "from-amber-500 to-orange-500" },
+          { label: "Revenue", value: `₹${orders.reduce((a, o) => a + o.total, 0).toLocaleString("en-IN")}`, icon: "💰", color: "from-emerald-500 to-teal-500" },
           { label: "Pending", value: orders.filter((o) => o.status === "pending").length, icon: "⏳", color: "from-purple-500 to-pink-500" },
         ].map((stat) => (
           <div key={stat.label} className="relative overflow-hidden bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-5">
@@ -176,7 +176,7 @@ export default function AdminPage() {
                   image_url: "", stock: "100", brand: "", material: "", featured: false,
                 });
               }}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium hover:shadow-lg transition-all duration-300"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium hover:shadow-lg transition-all duration-300"
             >
               {showForm ? "Cancel" : "+ Add Product"}
             </button>
@@ -237,13 +237,13 @@ export default function AdminPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <input type="checkbox" name="featured" checked={form.featured} onChange={handleChange}
-                    className="accent-amber-500 w-4 h-4" />
+                    className="accent-emerald-500 w-4 h-4" />
                   <label className="text-sm font-medium">Featured Product</label>
                 </div>
               </div>
               <div className="mt-4 flex gap-3">
                 <button type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium hover:shadow-lg transition-all duration-300">
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium hover:shadow-lg transition-all duration-300">
                   {editId ? "Update Product" : "Add Product"}
                 </button>
                 <button type="button" onClick={() => { setShowForm(false); setEditId(null); }}
@@ -276,7 +276,7 @@ export default function AdminPage() {
                           <div>
                             <p className="font-medium text-sm">{product.name}</p>
                             {product.featured && (
-                              <span className="text-xs text-amber-500">⭐ Featured</span>
+                              <span className="text-xs text-emerald-500">⭐ Featured</span>
                             )}
                           </div>
                         </div>
@@ -284,7 +284,7 @@ export default function AdminPage() {
                       <td className="px-4 py-3 text-sm">{product.category}</td>
                       <td className="px-4 py-3 text-sm font-semibold">₹{product.price.toLocaleString("en-IN")}</td>
                       <td className="px-4 py-3">
-                        <span className={`text-sm font-medium ${product.stock > 10 ? "text-green-600" : product.stock > 0 ? "text-amber-500" : "text-red-500"}`}>
+                        <span className={`text-sm font-medium ${product.stock > 10 ? "text-green-600" : product.stock > 0 ? "text-emerald-500" : "text-red-500"}`}>
                           {product.stock}
                         </span>
                       </td>

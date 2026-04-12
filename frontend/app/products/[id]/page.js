@@ -106,7 +106,7 @@ export default function ProductDetailPage() {
             className="w-full h-full object-cover"
           />
           {product.featured && (
-            <span className="absolute top-4 left-4 px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full shadow-lg">
+            <span className="absolute top-4 left-4 px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm font-bold rounded-full shadow-lg">
               ⭐ Featured
             </span>
           )}
@@ -115,7 +115,7 @@ export default function ProductDetailPage() {
         {/* Info */}
         <div className="flex flex-col">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-sm font-medium text-[var(--color-primary)] bg-amber-500/10 px-3 py-1 rounded-full">
+            <span className="text-sm font-medium text-[var(--color-primary)] bg-emerald-50 dark:bg-emerald-500/10 px-3 py-1 rounded-full">
               {product.category}
             </span>
             {product.brand && (
@@ -194,7 +194,7 @@ export default function ProductDetailPage() {
               id="add-to-cart-detail"
               onClick={handleAddToCart}
               disabled={product.stock === 0 || adding}
-              className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+              className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
             >
               {adding ? "Adding..." : product.stock === 0 ? "Out of Stock" : "Add to Cart"}
             </button>
@@ -280,7 +280,7 @@ export default function ProductDetailPage() {
               <button
                 type="submit"
                 disabled={submittingReview}
-                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50"
               >
                 {submittingReview ? "Submitting..." : "Submit Review"}
               </button>
@@ -297,7 +297,7 @@ export default function ProductDetailPage() {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white font-bold">
                         {review.user_name[0]}
                       </div>
                       <div>

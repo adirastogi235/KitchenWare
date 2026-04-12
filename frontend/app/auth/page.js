@@ -195,7 +195,7 @@ export default function AuthPage() {
                     required
                     placeholder="9876543210"
                     autoFocus
-                    className="flex-1 px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)] text-lg tracking-wider"
+                    className="flex-1 px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)] text-lg tracking-wider"
                   />
                 </div>
                 <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
@@ -206,7 +206,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading || phone.length !== 10}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
               >
                 {loading ? "Sending OTP..." : "Send OTP"}
               </button>
@@ -227,7 +227,7 @@ export default function AuthPage() {
                     }}
                     required
                     placeholder="Priya Sharma"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
               )}
@@ -247,7 +247,7 @@ export default function AuthPage() {
                       value={digit}
                       onChange={(e) => handleOtpChange(i, e.target.value)}
                       onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                      className="w-12 h-14 text-center text-xl font-bold rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-amber-500/20 outline-none transition-all text-[var(--color-text)]"
+                      className="w-12 h-14 text-center text-xl font-bold rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
                     />
                   ))}
                 </div>
@@ -256,7 +256,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading || otp.join("").length < 6}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
               >
                 {loading ? "Verifying..." : isNewUser ? "Create Account" : "Sign In"}
               </button>

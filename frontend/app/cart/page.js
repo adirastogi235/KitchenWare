@@ -15,7 +15,7 @@ export default function CartPage() {
         <p className="text-[var(--color-text-muted)] mb-6">You need to be logged in to manage your cart.</p>
         <Link
           href="/auth"
-          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-lg transition-all duration-300"
+          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:shadow-lg transition-all duration-300"
         >
           Sign In
         </Link>
@@ -33,7 +33,7 @@ export default function CartPage() {
         </p>
         <Link
           href="/products"
-          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-lg transition-all duration-300"
+          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:shadow-lg transition-all duration-300"
         >
           Browse Products
         </Link>
@@ -129,7 +129,7 @@ export default function CartPage() {
                 </span>
               </div>
               {cart.total < 999 && (
-                <p className="text-xs text-amber-600 dark:text-amber-400">
+                <p className="text-xs text-emerald-600 dark:text-emerald-400">
                   Add ₹{(999 - cart.total).toLocaleString("en-IN")} more for free shipping!
                 </p>
               )}
@@ -144,7 +144,7 @@ export default function CartPage() {
 
             <button
               onClick={() => router.push("/checkout")}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               Proceed to Checkout
             </button>
