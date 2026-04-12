@@ -6,7 +6,7 @@ from app.models.user import (
     SendOTPRequest, VerifyOTPRequest, UserResponse, UserUpdate, Token, SendOTPResponse,
 )
 from app.auth import create_access_token, get_current_user
-from app.sms import send_otp, verify_otp
+from app.sms import generate_and_send_otp, verify_stored_otp
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
@@ -26,7 +26,7 @@ def _user_response(user: dict) -> UserResponse:
 async def send_otp_endpoint(req: SendOTPRequest):
     existing = await users_collection.find_one({"phone": req.phone})
     try:
-        await send_otp(req.phone)
+        await generate_and_send_otp(req.phone)
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(e))
     return SendOTPResponse(message="OTP sent successfully", is_new_user=existing is None)
@@ -34,9 +34,8 @@ async def send_otp_endpoint(req: SendOTPRequest):
 
 @router.post("/verify-otp", response_model=Token)
 async def verify_otp_endpoint(req: VerifyOTPRequest):
-    try:
-        await verify_otp(req.phone, req.otp)
-    except Exception:
+    valid = await verify_stored_otp(req.phone, req.otp)
+    if not valid:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or expired OTP",
