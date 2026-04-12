@@ -36,7 +36,7 @@ async def generate_and_send_otp(phone: str) -> None:
                         "mobile": f"91{phone}",
                         "otp": otp,
                         "otp_length": 6,
-                        "otp_channel": "whatsapp",
+                        "otp_channel": "sms",
                     },
                 )
             data = resp.json()
