@@ -153,7 +153,7 @@ export default function AuthPage() {
       const firstName = userData?.name?.split(" ")[0] || "";
       if (mode === "signup") {
         showWelcome(
-          `Welcome to Rasoi Ghar, ${firstName}!`,
+          `रसोई घर में आपका स्वागत है, ${firstName}!`,
           "आपकी रसोई, हमारी ज़िम्मेदारी"
         );
       } else {
@@ -219,8 +219,8 @@ export default function AuthPage() {
           <p className="text-[var(--color-text-muted)]">
             {step === "phone"
               ? mode === "login"
-                ? "Sign in to your Rasoi Ghar account"
-                : "Join Rasoi Ghar today"
+                ? "Sign in to your रसोई घर account"
+                : "Join रसोई घर today"
               : `Enter the OTP sent to +91 ${phone}`}
           </p>
         </div>

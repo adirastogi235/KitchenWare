@@ -6,10 +6,10 @@ import Toast from "@/components/Toast";
 import WelcomeModal from "@/components/WelcomeModal";
 
 export const metadata = {
-  title: "Rasoi Ghar - Premium Kitchenware Shop",
+  title: "रसोई घर - Premium Kitchenware Shop",
   description:
-    "Your one-stop destination for premium kitchenware. From traditional Indian cookware to modern kitchen appliances, Rasoi Ghar brings quality to your kitchen.",
-  keywords: "kitchenware, cookware, cutlery, kitchen appliances, rasoi ghar, Indian kitchen",
+    "Your one-stop destination for premium kitchenware. From traditional Indian cookware to modern kitchen appliances, रसोई घर (Rasoi Ghar) brings quality to your kitchen.",
+  keywords: "kitchenware, cookware, cutlery, kitchen appliances, rasoi ghar, रसोई घर, Indian kitchen",
 };
 
 export default function RootLayout({ children }) {

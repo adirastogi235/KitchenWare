@@ -50,7 +50,7 @@ function OrdersContent() {
         <div className="mb-8 p-6 rounded-2xl bg-green-500/10 border border-green-500/20 text-center">
           <span className="text-4xl block mb-2">🎉</span>
           <h2 className="text-xl font-bold text-green-600 dark:text-green-400 mb-1">Order Placed Successfully!</h2>
-          <p className="text-sm text-[var(--color-text-muted)]">Thank you for shopping with Rasoi Ghar.</p>
+          <p className="text-sm text-[var(--color-text-muted)]">Thank you for shopping with रसोई घर.</p>
         </div>
       )}
 

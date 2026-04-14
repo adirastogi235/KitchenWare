@@ -10,7 +10,7 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-sm">
                 RG
               </div>
-              <span className="text-xl font-bold text-white tracking-tight">Rasoi Ghar</span>
+              <span className="text-xl font-bold text-white tracking-tight">रसोई घर</span>
             </div>
             <p className="text-sm leading-relaxed">
               Premium kitchenware curated for the modern Indian home. From traditional cookware to modern appliances — quality you can trust.
@@ -88,7 +88,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-500">
-            &copy; 2026 Rasoi Ghar. All rights reserved.
+            &copy; 2026 रसोई घर. All rights reserved.
           </p>
           <div className="flex gap-6">
             {["Terms", "Privacy", "Shipping"].map((item) => (
