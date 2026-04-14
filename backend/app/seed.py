@@ -333,17 +333,10 @@ async def seed():
     client = AsyncIOMotorClient(MONGODB_URL)
     db = client[DATABASE_NAME]
 
-    # Clear existing data
+    # Reset products only — preserve real users, carts, orders, wishlist, reviews
     await db["products"].delete_many({})
-    await db["users"].delete_many({})
-    await db["cart"].delete_many({})
-    await db["orders"].delete_many({})
-    await db["wishlist"].delete_many({})
-    await db["reviews"].delete_many({})
+    print("🗑️  Cleared products")
 
-    print("🗑️  Cleared existing data")
-
-    # Insert products
     for product in SAMPLE_PRODUCTS:
         product["created_at"] = datetime.now(timezone.utc)
         product["avg_rating"] = 0.0
@@ -352,11 +345,18 @@ async def seed():
     result = await db["products"].insert_many(SAMPLE_PRODUCTS)
     print(f"✅ Inserted {len(result.inserted_ids)} products")
 
-    # Insert users
-    await db["users"].insert_one(ADMIN_USER)
-    await db["users"].insert_one(SAMPLE_USER)
-    print("✅ Created admin user: phone 9876543210")
-    print("✅ Created sample user: phone 9876543211")
+    # Upsert demo users by phone so re-running doesn't wipe real accounts
+    await db["users"].update_one(
+        {"phone": ADMIN_USER["phone"]},
+        {"$setOnInsert": ADMIN_USER},
+        upsert=True,
+    )
+    await db["users"].update_one(
+        {"phone": SAMPLE_USER["phone"]},
+        {"$setOnInsert": SAMPLE_USER},
+        upsert=True,
+    )
+    print("✅ Upserted demo users (9876543210 admin, 9876543211 sample)")
 
     # Create indexes
     await db["users"].create_index("phone", unique=True)
