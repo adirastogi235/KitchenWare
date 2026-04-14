@@ -3,6 +3,7 @@ import { AppProvider } from "@/lib/context";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Toast from "@/components/Toast";
+import WelcomeModal from "@/components/WelcomeModal";
 
 export const metadata = {
   title: "Rasoi Ghar - Premium Kitchenware Shop",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
           <main className="flex-1">{children}</main>
           <Footer />
           <Toast />
+          <WelcomeModal />
         </AppProvider>
       </body>
     </html>

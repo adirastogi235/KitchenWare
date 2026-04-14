@@ -11,9 +11,14 @@ export function AppProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
   const [toast, setToast] = useState(null);
+  const [welcome, setWelcome] = useState(null);
 
   const showToast = useCallback((message, variant = "success") => {
     setToast({ message, variant, id: Date.now() });
+  }, []);
+
+  const showWelcome = useCallback((title, subtitle) => {
+    setWelcome({ title, subtitle, id: Date.now() });
   }, []);
 
   useEffect(() => {
@@ -154,6 +159,9 @@ export function AppProvider({ children }) {
         toast,
         showToast,
         dismissToast: () => setToast(null),
+        welcome,
+        showWelcome,
+        dismissWelcome: () => setWelcome(null),
       }}
     >
       {children}

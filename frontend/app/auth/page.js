@@ -38,7 +38,7 @@ export default function AuthPage() {
   const [error, setError] = useState("");
   const [countdown, setCountdown] = useState(0);
   const [confirmationResult, setConfirmationResult] = useState(null);
-  const { checkPhone, verifyFirebaseToken } = useApp();
+  const { checkPhone, verifyFirebaseToken, showWelcome } = useApp();
   const router = useRouter();
   const otpRefs = useRef([]);
   const recaptchaRef = useRef(null);
@@ -146,7 +146,22 @@ export default function AuthPage() {
     try {
       const result = await confirmationResult.confirm(otpString);
       const firebaseToken = await result.user.getIdToken();
-      await verifyFirebaseToken(firebaseToken, mode === "signup" ? name.trim() : null);
+      const userData = await verifyFirebaseToken(
+        firebaseToken,
+        mode === "signup" ? name.trim() : null
+      );
+      const firstName = userData?.name?.split(" ")[0] || "";
+      if (mode === "signup") {
+        showWelcome(
+          `Welcome to Rasoi Ghar, ${firstName}!`,
+          "आपकी रसोई, हमारी ज़िम्मेदारी"
+        );
+      } else {
+        showWelcome(
+          `Welcome back, ${firstName}!`,
+          "Great to see you again — happy shopping"
+        );
+      }
       router.push("/");
     } catch (err) {
       setError(getErrorMessage(err));
