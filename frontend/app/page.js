@@ -63,10 +63,10 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 leading-[1.05] tracking-tight">
-              Elevate Your
+              परंपरा से
               <br />
               <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Kitchen Experience
+                आधुनिकता तक
               </span>
             </h1>
 
