@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: "Cutlery", href: "/products?category=Cutlery" },
   { label: "Storage", href: "/products?category=Storage" },
   { label: "Appliances", href: "/products?category=Appliances" },
+  { label: "Puja", href: "/products?category=Puja" },
 ];
 
 export default function Navbar() {

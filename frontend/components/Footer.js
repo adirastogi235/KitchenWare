@@ -20,7 +20,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-5 text-white text-sm uppercase tracking-wider">Categories</h3>
             <ul className="space-y-3">
-              {["Cookware", "Cutlery", "Storage", "Appliances"].map((cat) => (
+              {["Cookware", "Cutlery", "Storage", "Appliances", "Puja"].map((cat) => (
                 <li key={cat}>
                   <Link
                     href={`/products?category=${cat}`}
