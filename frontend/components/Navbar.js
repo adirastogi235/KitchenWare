@@ -81,7 +81,7 @@ export default function Navbar() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
                   {cartCount > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 bg-emerald-500 text-white text-[10px] w-4.5 h-4.5 rounded-full flex items-center justify-center font-bold">
+                    <span className="absolute -top-0.5 -right-0.5 bg-[var(--color-primary)] text-white text-[10px] w-4.5 h-4.5 rounded-full flex items-center justify-center font-bold">
                       {cartCount}
                     </span>
                   )}
@@ -128,7 +128,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/auth"
-                className="ml-1 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium text-sm hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5"
+                className="ml-1 px-5 py-2 rounded-full bg-[var(--color-primary)] text-[#1a1410] font-semibold text-sm hover:bg-[var(--color-primary-dark)] hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/30"
               >
                 Sign In
               </Link>
