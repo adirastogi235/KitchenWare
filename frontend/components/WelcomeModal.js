@@ -37,7 +37,7 @@ export default function WelcomeModal() {
         }`}
       >
         <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-white/10 blur-2xl" />
-        <div className="absolute -bottom-16 -left-8 w-48 h-48 rounded-full bg-teal-300/20 blur-3xl" />
+        <div className="absolute -bottom-16 -left-8 w-48 h-48 rounded-full bg-yellow-300/20 blur-3xl" />
 
         <div className="relative">
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center ring-4 ring-white/20">

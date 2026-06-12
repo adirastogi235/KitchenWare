@@ -206,7 +206,7 @@ export default function AuthPage() {
       <div id="recaptcha-container"></div>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-emerald-500/25">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] flex items-center justify-center text-[#1a1410] font-bold text-2xl shadow-lg shadow-yellow-400/30">
             Rasoi Ghar
           </div>
           <h1 className="text-3xl font-bold mb-2">
@@ -275,7 +275,7 @@ export default function AuthPage() {
                     }}
                     required
                     placeholder="Enter your name"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-yellow-400/20 outline-none transition-all text-[var(--color-text)]"
                   />
                 </div>
               )}
@@ -300,7 +300,7 @@ export default function AuthPage() {
                     required
                     placeholder="9876543210"
                     autoFocus
-                    className="flex-1 px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)] text-lg tracking-wider"
+                    className="flex-1 px-4 py-3 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-yellow-400/20 outline-none transition-all text-[var(--color-text)] text-lg tracking-wider"
                   />
                 </div>
                 <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
@@ -311,7 +311,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading || phone.length !== 10}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-[#1a1410] font-semibold text-lg hover:shadow-xl hover:shadow-[var(--color-primary)]/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
               >
                 {loading ? "Sending OTP..." : mode === "login" ? "Send OTP" : "Send OTP & Sign Up"}
               </button>
@@ -320,14 +320,14 @@ export default function AuthPage() {
                 {mode === "login" ? (
                   <>
                     Don&apos;t have an account?{" "}
-                    <button type="button" onClick={() => switchMode("signup")} className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">
+                    <button type="button" onClick={() => switchMode("signup")} className="text-[var(--color-primary)] font-medium hover:underline">
                       Sign Up
                     </button>
                   </>
                 ) : (
                   <>
                     Already have an account?{" "}
-                    <button type="button" onClick={() => switchMode("login")} className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">
+                    <button type="button" onClick={() => switchMode("login")} className="text-[var(--color-primary)] font-medium hover:underline">
                       Login
                     </button>
                   </>
@@ -351,7 +351,7 @@ export default function AuthPage() {
                       value={digit}
                       onChange={(e) => handleOtpChange(i, e.target.value)}
                       onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                      className="w-12 h-14 text-center text-xl font-bold rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-[var(--color-text)]"
+                      className="w-12 h-14 text-center text-xl font-bold rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-yellow-400/20 outline-none transition-all text-[var(--color-text)]"
                     />
                   ))}
                 </div>
@@ -360,7 +360,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading || otp.join("").length < 6}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-[#1a1410] font-semibold text-lg hover:shadow-xl hover:shadow-[var(--color-primary)]/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
               >
                 {loading ? "Verifying..." : mode === "signup" ? "Create Account" : "Sign In"}
               </button>
@@ -374,7 +374,7 @@ export default function AuthPage() {
                     setError("");
                     setConfirmationResult(null);
                   }}
-                  className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline"
+                  className="text-[var(--color-primary)] font-medium hover:underline"
                 >
                   Change Number
                 </button>
@@ -382,7 +382,7 @@ export default function AuthPage() {
                   type="button"
                   onClick={handleResend}
                   disabled={countdown > 0 || loading}
-                  className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline disabled:opacity-40 disabled:no-underline"
+                  className="text-[var(--color-primary)] font-medium hover:underline disabled:opacity-40 disabled:no-underline"
                 >
                   {countdown > 0 ? `Resend in ${countdown}s` : "Resend OTP"}
                 </button>

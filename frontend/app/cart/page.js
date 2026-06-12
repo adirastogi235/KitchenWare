@@ -124,12 +124,12 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-[var(--color-text-muted)]">Shipping</span>
-                <span className={cart.total >= 999 ? "text-green-600" : ""}>
+                <span className={cart.total >= 999 ? "text-[var(--color-primary)]" : ""}>
                   {cart.total >= 999 ? "FREE" : "₹99"}
                 </span>
               </div>
               {cart.total < 999 && (
-                <p className="text-xs text-emerald-600 dark:text-emerald-400">
+                <p className="text-xs text-[var(--color-primary)]">
                   Add ₹{(999 - cart.total).toLocaleString("en-IN")} more for free shipping!
                 </p>
               )}
@@ -144,7 +144,7 @@ export default function CartPage() {
 
             <button
               onClick={() => router.push("/checkout")}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
+              className="w-full py-3.5 rounded-xl bg-[var(--color-primary)] text-[#1a1410] font-semibold text-lg hover:shadow-xl hover:shadow-yellow-400/30 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               Proceed to Checkout
             </button>

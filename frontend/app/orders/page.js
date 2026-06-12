@@ -47,9 +47,9 @@ function OrdersContent() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {success && (
-        <div className="mb-8 p-6 rounded-2xl bg-green-500/10 border border-green-500/20 text-center">
+        <div className="mb-8 p-6 rounded-2xl bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/20 text-center">
           <span className="text-4xl block mb-2">🎉</span>
-          <h2 className="text-xl font-bold text-green-600 dark:text-green-400 mb-1">Order Placed Successfully!</h2>
+          <h2 className="text-xl font-bold text-[var(--color-primary)] dark:text-[var(--color-primary)] mb-1">Order Placed Successfully!</h2>
           <p className="text-sm text-[var(--color-text-muted)]">Thank you for shopping with रसोई घर.</p>
         </div>
       )}
