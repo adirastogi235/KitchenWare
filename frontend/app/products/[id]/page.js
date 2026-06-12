@@ -194,7 +194,7 @@ export default function ProductDetailPage() {
               id="add-to-cart-detail"
               onClick={handleAddToCart}
               disabled={product.stock === 0 || adding}
-              className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg hover:shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
+              className="flex-1 py-3.5 rounded-xl bg-[var(--color-primary)] text-[#1a1410] font-semibold text-lg hover:shadow-xl hover:shadow-yellow-400/30 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-50 active:scale-[0.98]"
             >
               {adding ? "Adding..." : product.stock === 0 ? "Out of Stock" : "Add to Cart"}
             </button>
