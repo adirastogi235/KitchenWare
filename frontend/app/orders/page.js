@@ -10,7 +10,7 @@ const STATUS_COLORS = {
   pending: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
   confirmed: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
   shipped: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
-  delivered: "bg-green-500/10 text-green-600 dark:text-green-400",
+  delivered: "bg-[var(--color-primary)]/10 text-[var(--color-primary)]",
   cancelled: "bg-red-500/10 text-red-600 dark:text-red-400",
 };
 
@@ -35,7 +35,7 @@ function OrdersContent() {
       <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <span className="text-6xl block mb-4">📦</span>
         <h1 className="text-2xl font-bold mb-2">Please sign in</h1>
-        <Link href="/auth" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold">
+        <Link href="/auth" className="inline-block px-6 py-3 rounded-xl bg-[var(--color-primary)] text-[#1a1410] font-semibold hover:shadow-lg transition-all">
           Sign In
         </Link>
       </div>
@@ -63,7 +63,7 @@ function OrdersContent() {
           <span className="text-6xl block mb-4">📦</span>
           <h3 className="text-xl font-semibold mb-2">No orders yet</h3>
           <p className="text-[var(--color-text-muted)] mb-6">Start shopping to see your orders here!</p>
-          <Link href="/products" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold">
+          <Link href="/products" className="inline-block px-6 py-3 rounded-xl bg-[var(--color-primary)] text-[#1a1410] font-semibold hover:shadow-lg transition-all">
             Browse Products
           </Link>
         </div>

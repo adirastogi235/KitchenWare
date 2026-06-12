@@ -50,15 +50,15 @@ function ProductsContent() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="mb-10">
-        <span className="text-sm font-semibold tracking-widest uppercase text-emerald-600">Browse</span>
+        <span className="text-sm font-semibold tracking-widest uppercase text-[var(--color-primary)]">Browse</span>
         <h1 className="text-3xl md:text-5xl font-bold mt-2 tracking-tight">
           {category ? (
             <>
-              <span className="text-gradient">{category}</span> Collection
+              <span className="text-[var(--color-primary)]">{category}</span> Collection
             </>
           ) : (
             <>
-              All <span className="text-gradient">Products</span>
+              All <span className="text-[var(--color-primary)]">Products</span>
             </>
           )}
         </h1>
@@ -83,7 +83,7 @@ function ProductsContent() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all duration-200 text-[var(--color-text)]"
+            className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-yellow-400/20 outline-none transition-all duration-200 text-[var(--color-text)]"
           />
         </div>
 
@@ -91,7 +91,7 @@ function ProductsContent() {
           id="product-sort"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="px-4 py-3.5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] focus:border-emerald-400 outline-none text-[var(--color-text)] cursor-pointer"
+          className="px-4 py-3.5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] focus:border-[var(--color-primary)] outline-none text-[var(--color-text)] cursor-pointer"
         >
           <option value="newest">Newest First</option>
           <option value="price_asc">Price: Low to High</option>
@@ -121,7 +121,7 @@ function ProductsContent() {
                   onClick={() => setCategory("")}
                   className={`w-full text-left px-3.5 py-2.5 rounded-xl text-sm transition-all duration-200 ${
                     !category
-                      ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium"
+                      ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-medium"
                       : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-2)] hover:text-[var(--color-text)]"
                   }`}
                 >
@@ -133,7 +133,7 @@ function ProductsContent() {
                     onClick={() => setCategory(cat)}
                     className={`w-full text-left px-3.5 py-2.5 rounded-xl text-sm transition-all duration-200 ${
                       category === cat
-                        ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium"
+                        ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-medium"
                         : "text-[var(--color-text-muted)] hover:bg-[var(--color-surface-2)] hover:text-[var(--color-text)]"
                     }`}
                   >
@@ -151,14 +151,14 @@ function ProductsContent() {
                   placeholder="Min"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] text-sm outline-none focus:border-emerald-400 text-[var(--color-text)]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] text-sm outline-none focus:border-[var(--color-primary)] text-[var(--color-text)]"
                 />
                 <input
                   type="number"
                   placeholder="Max"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] text-sm outline-none focus:border-emerald-400 text-[var(--color-text)]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] text-sm outline-none focus:border-[var(--color-primary)] text-[var(--color-text)]"
                 />
               </div>
             </div>
