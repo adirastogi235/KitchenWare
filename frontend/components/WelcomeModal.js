@@ -32,7 +32,7 @@ export default function WelcomeModal() {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`relative w-full max-w-md bg-gradient-to-br from-emerald-500 via-teal-500 to-emerald-600 rounded-3xl p-10 shadow-2xl shadow-emerald-500/40 text-center text-white overflow-hidden transition-all duration-500 ${
+        className={`relative w-full max-w-md bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] rounded-3xl p-10 shadow-2xl shadow-yellow-400/30 text-center overflow-hidden transition-all duration-500 ${
           visible ? "scale-100 translate-y-0" : "scale-75 translate-y-8"
         }`}
       >
@@ -41,7 +41,7 @@ export default function WelcomeModal() {
 
         <div className="relative">
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center ring-4 ring-white/20">
-            <svg className="w-11 h-11 text-white drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-11 h-11 text-[#1a1410] drop-shadow" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
                 d="M10 1a.75.75 0 01.686.446l1.983 4.444 4.812.44a.75.75 0 01.426 1.303l-3.633 3.214 1.078 4.737a.75.75 0 01-1.118.811L10 13.903l-4.234 2.492a.75.75 0 01-1.118-.811l1.078-4.737L2.093 7.633a.75.75 0 01.426-1.303l4.812-.44 1.983-4.444A.75.75 0 0110 1z"
@@ -50,11 +50,11 @@ export default function WelcomeModal() {
             </svg>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight drop-shadow">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight drop-shadow text-[#1a1410]">
             {welcome.title}
           </h2>
           {welcome.subtitle && (
-            <p className="text-emerald-50/95 text-base md:text-lg font-medium leading-relaxed">
+            <p className="text-[#1a1410]/90 text-base md:text-lg font-medium leading-relaxed">
               {welcome.subtitle}
             </p>
           )}

@@ -33,7 +33,7 @@ export default function Toast() {
           visible ? "scale-100 translate-y-0" : "scale-95 -translate-y-2"
         } bg-white/90 dark:bg-slate-900/90 border-[var(--color-border)]`}
       >
-        <span className="flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 text-white text-lg shadow-lg shadow-emerald-500/25">
+        <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[var(--color-primary)] text-[#1a1410] text-lg shadow-lg shadow-yellow-400/30">
           ✓
         </span>
         <span className="font-semibold text-[var(--color-text)]">{toast.message}</span>

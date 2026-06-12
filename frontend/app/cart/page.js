@@ -15,7 +15,7 @@ export default function CartPage() {
         <p className="text-[var(--color-text-muted)] mb-6">You need to be logged in to manage your cart.</p>
         <Link
           href="/auth"
-          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:shadow-lg transition-all duration-300"
+          className="inline-block px-6 py-3 rounded-xl bg-[var(--color-primary)] text-[#1a1410] font-semibold hover:shadow-lg transition-all duration-300"
         >
           Sign In
         </Link>
@@ -33,7 +33,7 @@ export default function CartPage() {
         </p>
         <Link
           href="/products"
-          className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:shadow-lg transition-all duration-300"
+          className="inline-block px-6 py-3 rounded-xl bg-[var(--color-primary)] text-[#1a1410] font-semibold hover:shadow-lg transition-all duration-300"
         >
           Browse Products
         </Link>

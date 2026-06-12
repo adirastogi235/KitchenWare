@@ -9,7 +9,7 @@ export default function LoadingSpinner({ size = "md", text = "Loading..." }) {
     <div className="flex flex-col items-center justify-center py-12 gap-4">
       <div className={`${sizes[size]} relative`}>
         <div className="absolute inset-0 rounded-full border-4 border-[var(--color-border)]"></div>
-        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-emerald-500 animate-spin"></div>
+        <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[var(--color-primary)] animate-spin"></div>
       </div>
       {text && <p className="text-sm text-[var(--color-text-muted)] animate-pulse">{text}</p>}
     </div>

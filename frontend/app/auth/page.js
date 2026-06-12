@@ -207,7 +207,7 @@ export default function AuthPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-emerald-500/25">
-            RG
+            Rasoi Ghar
           </div>
           <h1 className="text-3xl font-bold mb-2">
             {step === "phone"
