@@ -77,15 +77,6 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:3000`
-
-## 🔑 Demo Credentials
-
-| Role  | Email                | Password    |
-|-------|---------------------|-------------|
-| Admin | admin@rasoighar.com | admin123    |
-| User  | priya@example.com   | password123 |
-
 ## 🎯 Features
 
 ### User Features
